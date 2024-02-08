@@ -1,0 +1,18 @@
+﻿@using KursKayir.Data
+
+@model Ogrenci
+
+
+<p>
+    <b>@Model.OgrenciAd @Model.OgrenciSoyad</b> isimli ogrenciyi silmek istiyor musunuz.
+
+    <form asp-action="Delete" method="post">
+        <input type="hidden" value="@Model.OgrenciKimlik" name="id"/>
+        <button type="submit" class="btn btn-danger">Evet</button>
+        <button type="submit" class="btn btn-primary">Hayir</button>
+    </form>
+
+
+</p>
+
+

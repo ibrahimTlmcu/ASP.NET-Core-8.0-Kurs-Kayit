@@ -1,0 +1,40 @@
+﻿@using KursKayir.Data
+
+@model IEnumerable<Ogrenci>
+
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<h2>Ogrenci Guncelleme</h2>
+<a href="/Ogrenci/Create" class="btn btn-primary">Ogrenci Ekle</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th style="width:150px;">@Html.DisplayNameFor(m=>m.OgrenciKimlik)</th>
+            <th>@Html.DisplayNameFor(m=>m.OgrenciAd)</th>
+            <th>@Html.DisplayNameFor(m=>m.OgrenciSoyad)</th>
+            <th style="width:150px"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var ogrenci in Model)
+        {
+            <tr>
+                <td>@ogrenci.OgrenciKimlik</td>
+                <td>@ogrenci.OgrenciAd</td>
+                <td>@ogrenci.OgrenciSoyad</td>
+                <td>
+                    @*burdan gelen id Ogrenci controller icinden edit kismina gidiyor editte
+                    eslesen id varsa bunu kontrol edip return ediyor.*@
+                    <a asp-controller="Ogrenci" asp-action="Edit" asp-route-id="@ogrenci.OgrenciKimlik" class="btn btn-sm btn-primary">Details</a>
+                    <a asp-controller="Ogrenci" asp-action="Delete" asp-route-id="@ogrenci.OgrenciKimlik" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+
+</table>
