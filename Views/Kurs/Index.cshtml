@@ -1,0 +1,39 @@
+﻿@using KursKayir.Data
+
+@model IEnumerable<Kurs>
+
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<h2>Kurs Listesi</h2>
+<a href="/Kurs/Create" class="btn btn-primary">Kurs Ekle</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th style="width:150px;">@Html.DisplayNameFor(m=>m.KursID)</th>
+            <th>@Html.DisplayNameFor(m=>m.KursBaslik)</th>
+           
+            <th style="width:150px"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var Kurs in Model)
+        {
+            <tr>
+                <td>@Kurs.KursID</td>
+                <td>@Kurs.KursBaslik</td>
+                <td>
+                    @*burdan gelen id Ogrenci Controller icinden edit kismina gidiyor editte
+                eslesen id varsa bunu kontrol edip return ediyor.*@
+                    <a asp-controller="Kurs" asp-action="Edit" asp-route-id="@Kurs.KursID" class="btn btn-sm btn-primary">Details</a>
+                    <a asp-controller="Kurs" asp-action="Delete" asp-route-id="@Kurs.KursBaslik" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+
+</table>

@@ -106,8 +106,17 @@ namespace KursKayir.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> Delete([FromForm]int id)
         {
+            var ogrenci = await _context.Ogrenciler.FindAsync(id);
+            if(ogrenci == null)
+            {
+                return NotFound();
+            }
+            _context.Ogrenciler.Remove(ogrenci);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index");
+
 
         }
     }
