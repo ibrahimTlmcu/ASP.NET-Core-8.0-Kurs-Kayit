@@ -82,23 +82,18 @@ namespace KursKayir.Controllers
             }
             return View(model);
         }
-
-
-        [HttpGet]
-
-        
         public async Task<IActionResult> Delete(int? id)
         {
-            if(id == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
             var ogrenci = await _context.Ogrenciler.FindAsync(id);
 
-            if(ogrenci == null)
+            if (ogrenci == null)
             {
-                return NotFound();  
+                return NotFound();
             }
 
             return View(ogrenci);
@@ -106,10 +101,10 @@ namespace KursKayir.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Delete([FromForm]int id)
+        public async Task<IActionResult> Delete([FromForm] int id)
         {
             var ogrenci = await _context.Ogrenciler.FindAsync(id);
-            if(ogrenci == null)
+            if (ogrenci == null)
             {
                 return NotFound();
             }
@@ -119,5 +114,7 @@ namespace KursKayir.Controllers
 
 
         }
+
+
     }
 }

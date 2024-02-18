@@ -53,5 +53,44 @@ namespace KursKayir.Controllers
             return View(kurs);
             //Bu bilgiler edit.cshtml icindeki modele gidecek
         }
+        [HttpGet]
+
+
+
+        [HttpGet]
+
+
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var ogrenci = await _context.Kurslar.FindAsync(id);
+
+            if (ogrenci == null)
+            {
+                return NotFound();
+            }
+
+            return View(ogrenci);
+
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete([FromForm] int id)
+        {
+            var kurs = await _context.Kurslar.FindAsync(id);
+            if (kurs == null)
+            {
+                return NotFound();
+            }
+            _context.Kurslar.Remove(kurs);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index");
+
+
+        }
     }
 }

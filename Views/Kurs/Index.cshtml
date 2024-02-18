@@ -8,10 +8,10 @@
 *@
 @{
 }
-<h2>Kurs Listesi</h2>
-<a href="/Kurs/Create" class="btn btn-primary">Kurs Ekle</a>
-<table class="table">
-    <thead>
+<h2 style ="text-align:center">Kurs Listesi</h2>
+<a style="margin-bottom:15px;" href="/Kurs/Create" class="btn btn-primary">Kurs Ekle</a>
+<table class="table table-success">
+    <thead class="thead-dark table-hover">
         <tr>
             <th style="width:150px;">@Html.DisplayNameFor(m=>m.KursID)</th>
             <th>@Html.DisplayNameFor(m=>m.KursBaslik)</th>
@@ -23,13 +23,13 @@
         @foreach (var Kurs in Model)
         {
             <tr>
-                <td>@Kurs.KursID</td>
-                <td>@Kurs.KursBaslik</td>
+                <td><b>@Kurs.KursID</b></td>
+                <td><b>@Kurs.KursBaslik</b></td>
                 <td>
                     @*burdan gelen id Ogrenci Controller icinden edit kismina gidiyor editte
                 eslesen id varsa bunu kontrol edip return ediyor.*@
                     <a asp-controller="Kurs" asp-action="Edit" asp-route-id="@Kurs.KursID" class="btn btn-sm btn-primary">Details</a>
-                    <a asp-controller="Kurs" asp-action="Delete" asp-route-id="@Kurs.KursBaslik" class="btn btn-sm btn-danger">Delete</a>
+                    <a asp-controller="Kurs" asp-action="Delete" asp-route-id="@Kurs.KursID" class="btn btn-sm btn-danger">Delete</a>
                 </td>
             </tr>
         }

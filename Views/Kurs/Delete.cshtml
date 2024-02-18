@@ -1,22 +1,19 @@
 ﻿@using KursKayir.Data
 
-@model Ogrenci
-
+@model Kurs
 
 <div class="orta-div">
     <p>
-        <b>@Model.OgrenciAd @Model.OgrenciSoyad</b> isimli ogrenciyi silmek istiyor musunuz.
+        <b>@Model.KursBaslik </b> isimli kursu silmek istiyor musunuz.
 
         <form asp-action="Delete" method="post">
-            <input type="hidden" value="@Model.OgrenciKimlik" name="id" />
+            <input type="hidden" value="@Model.KursID" name="id" />
             <button type="submit" class="btn btn-danger">Evet</button>
             <button type="submit" class="btn btn-primary">Hayir</button>
         </form>
-
     </p>
 
 </div>
-
 
 <style>
     .orta-div {
@@ -30,3 +27,4 @@
     }
 
 </style>
+
