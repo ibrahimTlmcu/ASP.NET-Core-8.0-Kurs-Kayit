@@ -43,7 +43,10 @@ namespace KursKayir.Controllers
                 return NotFound();
             }
 
-            var kurs = await _context.Kurslar.FindAsync(id);
+            var kurs = await _context.Kurslar
+                .Include(k => k.KursKayitlari)
+                .ThenInclude(k => k.Ogrenci)
+                .FirstOrDefaultAsync(kurs => kurs.KursID == id);
             //  var ogr = await _context.Ogrenciler.FirstOrDefaultAsync(o => o.OgrenciKimlik == id);
             //Gelen id veritabainda bir karsiligi olmayabilir
             if (kurs == null)

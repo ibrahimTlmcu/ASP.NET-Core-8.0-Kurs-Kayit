@@ -41,7 +41,10 @@ namespace KursKayir.Controllers
                 return NotFound();
             }
 
-            var ogr = await _context.Ogrenciler.FindAsync(id);
+            var ogr = await _context.Ogrenciler
+                .Include(o => o.KursKayitlari)
+                .ThenInclude(o=>o.Kurs)
+                .FirstOrDefaultAsync(o=> o.OgrenciKimlik == id);
           //  var ogr = await _context.Ogrenciler.FirstOrDefaultAsync(o => o.OgrenciKimlik == id);
             //Gelen id veritabainda bir karsiligi olmayabilir
             if (ogr == null)

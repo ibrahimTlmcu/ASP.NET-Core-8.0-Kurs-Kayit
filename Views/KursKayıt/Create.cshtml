@@ -1,5 +1,5 @@
 ﻿@using KursKayir.Data;
-@model Ogrenci
+@model  KursKayit
 
 
 @*
@@ -7,35 +7,32 @@
 *@
 @{
 }
+
 <div class="orta-div">
 
-    <form asp-controller="Ogrenci" asp-action="Create" method="post">
+    <form asp-controller="KursKayıt" asp-action="Create" method="post">
+        <h1 style="text-align :center;">Kurs Kayıt </h1>
         <div class="mb-3">
-            <label asp-for="OgrenciAd" class="form-label">Ogrenci Ad</label>
-            <input asp-for="OgrenciAd" class="form-control" />
-        </div>
+            <b> <label asp-for="OgrenciId" class="form-label">Ogrenci</label></b>
+            <select asp-for ="OgrenciId" asp-items="ViewBag.Ogrenciler" class="form-control">
+                <option value=""> Seçiniz   </option>
+            </select>
+           
 
-        <div class="mb-3">
-            <label asp-for="OgrenciSoyad" class="form-label">Ogrenci Soyad</label>
-            <input asp-for="OgrenciSoyad" class="form-control" />
         </div>
-
         <div class="mb-3">
-            <label asp-for="Eposta" class="form-label">Eposta </label>
-            <input asp-for="Eposta" class="form-control" />
-        </div>
-
-        <div class="mb-3">
-            <label asp-for="Telefon" class="form-label">Telefon </label>
-            <input asp-for="Telefon" class="form-control" />
+            <b><label asp-for="KursId" class="form-label">Kurs</label></b>
+            <select asp-for ="KursId" asp-items="ViewBag.Kurslar" class="form-control">
+                <option value=""> Seçiniz   </option>
+            </select>
+           
         </div>
 
         <button type="submit" class="btn btn-primary">Kaydet</button>
-
     </form>
 </div>
 
- <style>
+<style>
     .orta-div {
         width: 50%; /* Sayfanın genişliğinin yarısı kadar genişlik */
         margin: 27%; /* Dikey hizalama için margin kullanarak otomatik olarak ortalamak */
@@ -45,4 +42,4 @@
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Gölge efekti */
         background-color: #fff; /* Arka plan rengi */
     }
- </style>
+</style>

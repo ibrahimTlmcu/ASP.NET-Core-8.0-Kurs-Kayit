@@ -10,5 +10,7 @@ namespace KursKayir.Data
 
         public string? KursBaslik { get; set; }
 
+        public ICollection<KursKayit> KursKayitlari { get; set; } = new List<KursKayit>();
+
     }
 }

@@ -5,16 +5,38 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
+
 }
-<form asp-controller="Kurs" asp-action="Edit" method="post">
-    <div class="mb-3">
-        <input type="hidden" asp-for="KursID" />
-        <label asp-for="KursBaslik" class="form-label">Baslik</label>
-        <input asp-for="KursBaslik" class="form-control" />
+<div class="row">
+    <div class="col-8">
+        <form asp-controller="Kurs" asp-action="Edit" method="post">
+            <div class="mb-3">
+                <input type="hidden" asp-for="KursID" />
+                <h3> <label asp-for="KursBaslik" class="form-label">Kurslar</label></h3>
+                <input asp-for="KursBaslik" class="form-control" />
+            </div>
+            <button type="submit" class="btn btn-primary">Kaydet</button>
+        </form>
     </div>
 
+    <div class="col-4">
+      
+        <h2>Kursu Alan Ogrenciler</h2>
+        <hr />
+        @foreach (var item in Model.KursKayitlari)
+        {
+            <h5>@item.Ogrenci.AdSoyad</h5> 
+           
+        }
+    </div>
+</div>
 
+<style>
+    .col-4 {
+        background-color: rgba(255, 255, 255, 0.5); /* Arka plan rengi, son değer saydamlık (0 ile 1 arasında olmalı) */
+        border-radius: 20px; /* Oval köşeler için kenar yarıçapı */
+        padding: 20px; /* Kutu içeriği ile iç kenar arasındaki boşluk */
+    }
 
-    <button type="submit" class="btn btn-primary">Kaydet</button>
-
-</form> 
+    
+</style>

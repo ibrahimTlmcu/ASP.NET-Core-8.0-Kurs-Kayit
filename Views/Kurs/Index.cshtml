@@ -8,32 +8,48 @@
 *@
 @{
 }
-<h2 style ="text-align:center">Kurs Listesi</h2>
-<a style="margin-bottom:15px;" href="/Kurs/Create" class="btn btn-primary">Kurs Ekle</a>
-<table class="table table-success">
-    <thead class="thead-dark table-hover">
-        <tr>
-            <th style="width:150px;">@Html.DisplayNameFor(m=>m.KursID)</th>
-            <th>@Html.DisplayNameFor(m=>m.KursBaslik)</th>
-           
-            <th style="width:150px"></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var Kurs in Model)
-        {
+
+<div class="orta-div">
+    <h2 style="text-align:center">Kurs Listesi</h2>
+    <a style="margin-bottom:15px;" href="/Kurs/Create" class="btn btn-primary">Kurs Ekle</a>
+    <table class="table table-success">
+        <thead class="thead-dark table-hover">
             <tr>
-                <td><b>@Kurs.KursID</b></td>
-                <td><b>@Kurs.KursBaslik</b></td>
-                <td>
-                    @*burdan gelen id Ogrenci Controller icinden edit kismina gidiyor editte
-                eslesen id varsa bunu kontrol edip return ediyor.*@
-                    <a asp-controller="Kurs" asp-action="Edit" asp-route-id="@Kurs.KursID" class="btn btn-sm btn-primary">Details</a>
-                    <a asp-controller="Kurs" asp-action="Delete" asp-route-id="@Kurs.KursID" class="btn btn-sm btn-danger">Delete</a>
-                </td>
+                <th style="width:150px;">@Html.DisplayNameFor(m=>m.KursID)</th>
+                <th>@Html.DisplayNameFor(m=>m.KursBaslik)</th>
+
+                <th style="width:150px"></th>
             </tr>
-        }
-    </tbody>
+        </thead>
+        <tbody>
+            @foreach (var Kurs in Model)
+            {
+                <tr>
+                    <td><b>@Kurs.KursID</b></td>
+                    <td><b>@Kurs.KursBaslik</b></td>
+                    <td>
+                        @*burdan gelen id Ogrenci Controller icinden edit kismina gidiyor editte
+                    eslesen id varsa bunu kontrol edip return ediyor.*@
+                        <a asp-controller="Kurs" asp-action="Edit" asp-route-id="@Kurs.KursID" class="btn btn-sm btn-primary">Details</a>
+                        <a asp-controller="Kurs" asp-action="Delete" asp-route-id="@Kurs.KursID" class="btn btn-sm btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
 
 
-</table>
+    </table>
+
+</div>
+
+<style>
+    .orta-div {
+        width: 50%; /* Sayfanın genişliğinin yarısı kadar genişlik */
+        margin: 27%; /* Dikey hizalama için margin kullanarak otomatik olarak ortalamak */
+        padding: 20px; /* İçerik ile kenar arasında boşluk bırakmak için */
+        border: 1px solid #ccc; /* Kenarlık eklemek */
+        border-radius: 10px; /* Kenar yuvarlaklığı */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Gölge efekti */
+        background-color: #fff; /* Arka plan rengi */
+    }
+</style>

@@ -11,8 +11,19 @@ namespace KursKayir.Data
 
         public string? OgrenciSoyad { get; set; }
 
+        public string AdSoyad
+        {
+            get
+            {
+                return this.OgrenciAd + " " + this.OgrenciSoyad;
+            }
+        }//Tek bir sekilde dondurmek icin 
         public string? Eposta { get; set; }
 
         public string? Telefon { get; set; }
+
+        public ICollection<KursKayit> KursKayitlari { get; set; } = new List<KursKayit>();
+        
+        //Ogrencilerin aldigi kurlsari burda tuttuk
     }
 }
